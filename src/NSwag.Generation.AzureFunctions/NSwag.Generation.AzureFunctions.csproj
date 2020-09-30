@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>Jussi Saarivirta</Authors>
+    <Company>Jussi Saarivirta</Company>
+    <Description>NSwag SwaggerGenerator for generating Swagger JSON from HttpTriggered Azure Functions. Supports the AzureFunctionsV2.HttpExtensions function signature and authentication extensions as well.</Description>
+    <Copyright>(c) 2019 Jussi Saarivirta</Copyright>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Jusas/NSwag.AzureFunctionsV2</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/Jusas/NSwag.AzureFunctionsV2/master/assets/logo.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Jusas/NSwag.AzureFunctionsV2</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>Azure Functions, Swagger, NSwag</PackageTags>
+    <Version>1.1.3</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>NSwag.Generation.AzureFunctions\NSwag.Generation.AzureFunctions.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NSwag.Annotations" Version="13.7.0" />
+    <PackageReference Include="NSwag.Generation" Version="13.7.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NSwag.Annotations.AzureFunctions\NSwag.Annotations.AzureFunctions.csproj" />
+  </ItemGroup>
+
+</Project>

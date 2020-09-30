@@ -19,7 +19,8 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
-using NSwag.Annotations.AzureFunctionsV2;
+
+using NSwag.Annotations.AzureFunctions;
 using NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp.Helpers;
 
 namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp

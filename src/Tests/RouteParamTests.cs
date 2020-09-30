@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NJsonSchema;
+
+using NSwag.Generation.AzureFunctions;
 using NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp;
 using Xunit;
 
@@ -16,8 +18,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_two_route_params_from_function_signature()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionsTestApp.RouteParamTests.RouteParamTest);
 
             // Act

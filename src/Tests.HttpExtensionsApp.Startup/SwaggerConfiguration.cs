@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
+using NSwag.Generation.AzureFunctions;
+using NSwag.Generation.AzureFunctions.Processors;
 using NSwag.Generation.Processors.Security;
-using NSwag.SwaggerGeneration.AzureFunctionsV2.Processors;
 
 namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsApp.Startup
 {
     public static class SwaggerConfiguration
     {
-        public static AzureFunctionsV2ToSwaggerGeneratorSettings SwaggerGeneratorSettings { get; set; }
+        public static AzureFunctionsOpenApiDocumentGeneratorSettings SwaggerGeneratorSettings { get; set; }
 
         /// <summary>
         /// Initialize SwaggerGenerator configuration.
@@ -15,7 +17,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsApp.Start
         /// </summary>
         static SwaggerConfiguration()
         {
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
             SwaggerGeneratorSettings = settings;
 
             settings.Title = "Azure Functions Swagger example";

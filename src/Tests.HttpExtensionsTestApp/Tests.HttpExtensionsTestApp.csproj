@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AzureFunctionsVersion>v2</AzureFunctionsVersion>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AzureFunctionsVersion>v3</AzureFunctionsVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>Tests.HttpExtensionsTestApp\NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp.xml</DocumentationFile>
@@ -65,17 +65,17 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AzureFunctionsV2.HttpExtensions" Version="1.3.1" />
-    <PackageReference Include="Fody" Version="4.0.2">
+    <PackageReference Include="Fody" Version="6.2.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.0" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.24" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.9" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NSwag.Annotations.AzureFunctionsV2\NSwag.Annotations.AzureFunctionsV2.csproj" />
+    <ProjectReference Include="..\NSwag.Annotations.AzureFunctions\NSwag.Annotations.AzureFunctions.csproj" />
     <ProjectReference Include="..\Tests.HttpExtensionsApp.Startup\Tests.HttpExtensionsApp.Startup.csproj" />
-    <ProjectReference Include="..\NSwag.SwaggerGeneration.AzureFunctionsV2\NSwag.SwaggerGeneration.AzureFunctionsV2.csproj" />
+    <ProjectReference Include="..\NSwag.Generation.AzureFunctions\NSwag.Generation.AzureFunctions.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NJsonSchema;
-using NSwag.SwaggerGeneration.AzureFunctionsV2.Processors;
+
+using NSwag.Generation.AzureFunctions;
+using NSwag.Generation.AzureFunctions.Processors;
 using NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp;
 using Xunit;
 
@@ -18,8 +20,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_queryparam_qp_that_is_required()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsQueryParams1);
 
             // Act
@@ -39,8 +41,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_queryparam_of_type_int_list_that_is_not_required()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsQueryParams2);
 
             // Act
@@ -61,8 +63,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_queryparam_of_type_Dog_that_is_not_required()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsQueryParams3);
 
             // Act
@@ -84,8 +86,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_header_of_type_string_that_is_not_required()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsHeaders1);
 
             // Act
@@ -105,8 +107,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_header_of_type_Dog_that_is_required()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsHeaders2);
 
             // Act
@@ -127,8 +129,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_body_of_type_Dog_that_is_not_required()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsBody1);
 
             // Act
@@ -147,8 +149,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_body_of_type_string_that_is_required()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsBody2);
 
             // Act
@@ -167,8 +169,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_body_of_type_XmlDocument_and_consume_xml()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsBody4);
 
             // Act
@@ -187,8 +189,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_body_of_type_Dog_array_that_is_required()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsBody3);
 
             // Act
@@ -208,8 +210,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_form_field_of_type_string_that_is_required()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsForm1);
 
             // Act
@@ -228,8 +230,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_form_field_of_type_Dog_that_is_required()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsForm2);
 
             // Act
@@ -248,9 +250,9 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_create_authorized_operation_from_HttpAuthorizeAttributed_function()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
             settings.OperationProcessors.Add(new OperationSecurityProcessor("Bearer", OpenApiSecuritySchemeType.OAuth2));
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsJwtAuth1);
 
             // Act
@@ -268,9 +270,9 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_create_authorized_operation_from_HttpAuthorizeAttribute_inheriting_attributed_function()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
             settings.OperationProcessors.Add(new OperationSecurityProcessor("Bearer", OpenApiSecuritySchemeType.OAuth2));
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
             var functionName = nameof(HttpExtensionTests.HttpExtensionsJwtAuth2);
 
             // Act

@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
+
+using NSwag.Generation.AzureFunctions;
 using NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp;
 using Xunit;
 
@@ -12,8 +14,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
         public async Task Should_include_nonstatic_function_classes_and_methods()
         {
             // Arrange
-            var settings = new AzureFunctionsV2ToSwaggerGeneratorSettings();
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(settings);
+            var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
 
             // Act
             var swaggerDoc = await generator.GenerateForAzureFunctionClassesAsync(
@@ -21,18 +23,6 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
 
             // Assert
             swaggerDoc.Operations.Count().Should().Be(1);
-        }
-
-        [Fact]
-        public async Task Should_find_nonstatic_function_classes()
-        {
-            // Arrange
-
-            // Act
-            var azureFuncClasses = AzureFunctionsV2ToSwaggerGenerator.GetAzureFunctionClasses(typeof(NonStaticFunctionClass).Assembly);
-
-            // Assert
-            azureFuncClasses.Should().Contain(x => x.Name == nameof(NonStaticFunctionClass));
         }
     }
 }

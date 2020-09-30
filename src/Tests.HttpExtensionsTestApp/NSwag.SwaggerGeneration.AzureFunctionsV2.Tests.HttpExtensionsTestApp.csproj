@@ -73,9 +73,9 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.24" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NSwag.Annotations.AzureFunctionsV2\NSwag.Annotations.AzureFunctionsV2.csproj" />
+    <ProjectReference Include="..\NSwag.Annotations.AzureFunctions\NSwag.Annotations.AzureFunctions.csproj" />
     <ProjectReference Include="..\NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsApp.Startup\NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsApp.Startup.csproj" />
-    <ProjectReference Include="..\NSwag.SwaggerGeneration.AzureFunctionsV2\NSwag.SwaggerGeneration.AzureFunctionsV2.csproj" />
+    <ProjectReference Include="..\NSwag.Generation.AzureFunctions\NSwag.Generation.AzureFunctions.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

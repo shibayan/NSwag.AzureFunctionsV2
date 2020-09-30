@@ -16,8 +16,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NJsonSchema.Infrastructure;
 using NSwag.Annotations;
-using NSwag.Annotations.AzureFunctionsV2;
-using NSwag.SwaggerGeneration.AzureFunctionsV2.Processors;
+using NSwag.Generation.AzureFunctions;
 using NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsApp.Startup;
 
 namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
@@ -37,7 +36,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
             HttpRequest req,
             ILogger log)
         {
-            var generator = new AzureFunctionsV2ToSwaggerGenerator(SwaggerConfiguration.SwaggerGeneratorSettings);
+            var generator = new AzureFunctionsOpenApiDocumentGenerator(SwaggerConfiguration.SwaggerGeneratorSettings);
             var funcClasses = new[]
             {
                 typeof(SwaggerEndpoints),

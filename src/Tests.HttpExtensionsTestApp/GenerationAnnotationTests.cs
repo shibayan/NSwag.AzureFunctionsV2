@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NSwag.Annotations;
-using NSwag.Annotations.AzureFunctionsV2;
+using NSwag.Annotations.AzureFunctions;
 
 namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
 {

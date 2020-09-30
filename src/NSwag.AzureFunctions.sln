@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSwag.Annotations.AzureFunctionsV2", "NSwag.Annotations.AzureFunctionsV2\NSwag.Annotations.AzureFunctionsV2.csproj", "{F3740BE3-8589-4D81-B75B-355FD19246FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSwag.Annotations.AzureFunctions", "NSwag.Annotations.AzureFunctions\NSwag.Annotations.AzureFunctions.csproj", "{F3740BE3-8589-4D81-B75B-355FD19246FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSwag.SwaggerGeneration.AzureFunctionsV2", "NSwag.SwaggerGeneration.AzureFunctionsV2\NSwag.SwaggerGeneration.AzureFunctionsV2.csproj", "{C2149BF6-0FAC-4B94-8FBD-45A3EF92FA19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSwag.Generation.AzureFunctions", "NSwag.Generation.AzureFunctions\NSwag.Generation.AzureFunctions.csproj", "{C2149BF6-0FAC-4B94-8FBD-45A3EF92FA19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Core", "01 Core", "{2BD29F43-299D-48D0-92C8-A20277393F1D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 SwaggerGeneration", "02 SwaggerGeneration", "{0855E9A6-019F-45CC-AE66-2F5CDFD4B159}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Generation", "02 Generation", "{0855E9A6-019F-45CC-AE66-2F5CDFD4B159}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Tests", "04 Tests", "{331BE0CD-3B6D-4B7A-B954-9732670FAD85}"
 EndProject
