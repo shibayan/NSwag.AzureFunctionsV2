@@ -48,7 +48,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
 
             if (securityRequirement)
             {
-                if(context.OperationDescription.Operation.Security == null)
+                if (context.OperationDescription.Operation.Security == null)
                     context.OperationDescription.Operation.Security = new Collection<OpenApiSecurityRequirement>();
 
                 context.OperationDescription.Operation.Security.Add(new OpenApiSecurityRequirement()
@@ -65,8 +65,8 @@ namespace NSwag.Generation.AzureFunctions.Processors
             var allAttributes = methodInfo.GetCustomAttributes().Concat(
                 methodInfo.DeclaringType.GetTypeInfo().GetCustomAttributes());
 
-            var authorizeAttributes = allAttributes.Where(a => a.GetType().Name == "SwaggerAuthorizeAttribute").ToList();
-            
+            var authorizeAttributes = allAttributes.Where(a => a.GetType().Name == "OpenApiAuthorizeAttribute" || a.GetType().Name == "SwaggerAuthorizeAttribute").ToList();
+
             // HttpExtensions support.
             var httpExtensionsAuthAttributes = allAttributes.Where(
                 a => a.GetType().Name == "HttpAuthorizeAttribute" ||

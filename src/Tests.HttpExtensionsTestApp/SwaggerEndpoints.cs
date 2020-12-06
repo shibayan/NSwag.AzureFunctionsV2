@@ -45,14 +45,14 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
                 typeof(RouteParamTests)
             };
             var document = await generator.GenerateForAzureFunctionClassesAsync(funcClasses, null);
-            
+
             // Workaround for NSwag global security bug, see https://github.com/RicoSuter/NSwag/pull/2305
             document.Security.Clear();
 
             var json = document.ToJson();
             return new OkObjectResult(json);
         }
-        
+
         /// <summary>
         /// Serves SwaggerUI files.
         /// </summary>

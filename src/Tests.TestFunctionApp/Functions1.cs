@@ -56,7 +56,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp
             return new OkObjectResult(new ResponseModelWithPrimitives() { IntValue = 1, StringValue = "hello swagger" });
         }
 
-        [SwaggerRequestBodyType(typeof(string), true, "RequestPrimitive", "Description")]
+        [OpenApiRequestBodyType(typeof(string), true, "RequestPrimitive", "Description")]
         [FunctionName("PostPrimitiveTypeAnnotation")]
         public static async Task<IActionResult> PostPrimitiveTypeAnnotation([HttpTrigger(
                 AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
@@ -67,18 +67,18 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp
             return new OkObjectResult(input);
         }
 
-        [SwaggerRequestBodyType(typeof(RequestBodyModelWithPrimitives), true, "RequestModel", "Description")]
+        [OpenApiRequestBodyType(typeof(RequestBodyModelWithPrimitives), true, "RequestModel", "Description")]
         [FunctionName("PostComplexTypeAnnotation")]
         public static async Task<IActionResult> PostComplexTypeAnnotation([HttpTrigger(
                 AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("Triggered");
-            var input = JsonConvert.DeserializeObject<RequestBodyModelWithPrimitives>(await req.ReadAsStringAsync());            
+            var input = JsonConvert.DeserializeObject<RequestBodyModelWithPrimitives>(await req.ReadAsStringAsync());
             return new OkObjectResult(input);
         }
 
-        [SwaggerRequestBodyType(typeof(RequestBodyModelWithComplexType), true, "RequestModel", "Description")]
+        [OpenApiRequestBodyType(typeof(RequestBodyModelWithComplexType), true, "RequestModel", "Description")]
         [FunctionName("PostNestedComplexTypeAnnotation")]
         public static async Task<IActionResult> PostNestedComplexTypeAnnotation([HttpTrigger(
                 AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
@@ -89,9 +89,9 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp
             return new OkObjectResult(input);
         }
 
-        [SwaggerFormDataFile(true, "file", "Description")]
-        [SwaggerFormData("text", false, typeof(string), "Description")]
-        [SwaggerFormData("number", false, typeof(int), "Description")]
+        [OpenApiFormDataFile(true, "file", "Description")]
+        [OpenApiFormData("text", false, typeof(string), "Description")]
+        [OpenApiFormData("number", false, typeof(int), "Description")]
         [Consumes("multipart/form-data")]
         [FunctionName("MultipartFormUploadAnnotation")]
         public static async Task<IActionResult> MultipartFormUploadAnnotation([HttpTrigger(
@@ -106,7 +106,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp
         }
 
         [FunctionName("AuthorizeAnnotation")]
-        [SwaggerAuthorize]
+        [OpenApiAuthorize(AuthScheme.Basic)]
         public static async Task<IActionResult> AuthorizeAnnotation([HttpTrigger(
             AuthorizationLevel.Anonymous, "GET", Route = "test/authorizedonly")] HttpRequest req,
             ILogger log)

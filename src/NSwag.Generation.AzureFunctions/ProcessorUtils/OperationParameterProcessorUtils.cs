@@ -24,15 +24,15 @@ namespace NSwag.Generation.AzureFunctions.ProcessorUtils
         {
             var collection = new SwaggerAzureFunctionAttributeCollection();
             collection.RequestBodyTypeAttribute = method.GetCustomAttributes()
-                .SingleOrDefault(x => x.GetType().Name == "SwaggerRequestBodyTypeAttribute");
+                .SingleOrDefault(x => x.GetType().Name == "OpenApiRequestBodyTypeAttribute" || x.GetType().Name == "SwaggerRequestBodyTypeAttribute");
             collection.HeaderAttributes = method.GetCustomAttributes()
-                .Where(x => x.GetType().Name == "SwaggerRequestHeaderAttribute").ToArray();
+                .Where(x => x.GetType().Name == "OpenApiRequestHeaderAttribute" || x.GetType().Name == "SwaggerRequestHeaderAttribute").ToArray();
             collection.QueryAttributes = method.GetCustomAttributes()
-                .Where(x => x.GetType().Name == "SwaggerQueryParameterAttribute").ToArray();
+                .Where(x => x.GetType().Name == "OpenApiQueryParameterAttribute" || x.GetType().Name == "SwaggerQueryParameterAttribute").ToArray();
             collection.UploadFileAttributes = method.GetCustomAttributes()
-                .Where(x => x.GetType().Name == "SwaggerFormDataFileAttribute").ToArray();
+                .Where(x => x.GetType().Name == "OpenApiFormDataFileAttribute" || x.GetType().Name == "SwaggerFormDataFileAttribute").ToArray();
             collection.FormDataAttributes = method.GetCustomAttributes()
-                .Where(x => x.GetType().Name == "SwaggerFormDataAttribute").ToArray();
+                .Where(x => x.GetType().Name == "OpenApiFormDataAttribute" || x.GetType().Name == "SwaggerFormDataAttribute").ToArray();
 
             return collection;
         }

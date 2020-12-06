@@ -49,7 +49,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsQueryParams1")]
         public static async Task<IActionResult> HttpExtensionsQueryParams1(
             [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = null)] HttpRequest req,
-            [HttpQuery("qp", Required = true)]HttpParam<string> queryParam,
+            [HttpQuery("qp", Required = true)] HttpParam<string> queryParam,
             ILogger log)
         {
             return new OkResult();
@@ -68,7 +68,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsQueryParams2")]
         public static async Task<IActionResult> HttpExtensionsQueryParams2(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            [HttpQuery]HttpParam<List<int>> queryParam,
+            [HttpQuery] HttpParam<List<int>> queryParam,
             ILogger log)
         {
             return new OkResult();
@@ -87,7 +87,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsQueryParams3")]
         public static async Task<IActionResult> HttpExtensionsQueryParams3(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            [HttpQuery]HttpParam<Dog> queryParam,
+            [HttpQuery] HttpParam<Dog> queryParam,
             ILogger log)
         {
             return new OkResult();
@@ -106,7 +106,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsHeaders1")]
         public static async Task<IActionResult> HttpExtensionsHeaders1(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            [HttpHeader(Name = "x-header")]HttpParam<string> header,
+            [HttpHeader(Name = "x-header")] HttpParam<string> header,
             ILogger log)
         {
             return new OkResult();
@@ -125,7 +125,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsHeaders2")]
         public static async Task<IActionResult> HttpExtensionsHeaders2(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            [HttpHeader(Name = "x-header", Required = true)]HttpParam<Dog> header,
+            [HttpHeader(Name = "x-header", Required = true)] HttpParam<Dog> header,
             ILogger log)
         {
             return new OkResult();
@@ -144,7 +144,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsBody1")]
         public static async Task<IActionResult> HttpExtensionsBody1(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
-            [HttpBody]HttpParam<Dog> body,
+            [HttpBody] HttpParam<Dog> body,
             ILogger log)
         {
             return new OkResult();
@@ -163,7 +163,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsBody2")]
         public static async Task<IActionResult> HttpExtensionsBody2(
             [HttpTrigger(AuthorizationLevel.Anonymous, "patch", Route = null)] HttpRequest req,
-            [HttpBody(Required = true)]HttpParam<string> body,
+            [HttpBody(Required = true)] HttpParam<string> body,
             ILogger log)
         {
             return new OkResult();
@@ -182,7 +182,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsBody3")]
         public static async Task<IActionResult> HttpExtensionsBody3(
             [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = null)] HttpRequest req,
-            [HttpBody(Required = true)]HttpParam<Dog[]> body,
+            [HttpBody(Required = true)] HttpParam<Dog[]> body,
             ILogger log)
         {
             return new OkResult();
@@ -201,7 +201,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsBody4")]
         public static async Task<IActionResult> HttpExtensionsBody4(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
-            [HttpBody(Required = true)]HttpParam<XmlDocument> body,
+            [HttpBody(Required = true)] HttpParam<XmlDocument> body,
             ILogger log)
         {
             return new OkResult();
@@ -220,7 +220,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsForm1")]
         public static async Task<IActionResult> HttpExtensionsForm1(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
-            [HttpForm(Required = true)]HttpParam<string> formField,
+            [HttpForm(Required = true)] HttpParam<string> formField,
             ILogger log)
         {
             return new OkResult();
@@ -239,7 +239,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsForm2")]
         public static async Task<IActionResult> HttpExtensionsForm2(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
-            [HttpForm(Required = true)]HttpParam<Dog> formField,
+            [HttpForm(Required = true)] HttpParam<Dog> formField,
             ILogger log)
         {
             return new OkResult();
@@ -259,8 +259,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsForm3")]
         public static async Task<IActionResult> HttpExtensionsForm3(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
-            [HttpForm(Required = true)]HttpParam<IFormFile> file,
-            [HttpForm]HttpParam<string> formField,
+            [HttpForm(Required = true)] HttpParam<IFormFile> file,
+            [HttpForm] HttpParam<string> formField,
             ILogger log)
         {
             return new OkResult();
@@ -281,7 +281,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsJwtAuth1")]
         public static async Task<IActionResult> HttpExtensionsJwtAuth1(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            [HttpToken]HttpUser user,
+            [HttpToken] HttpUser user,
             ILogger log)
         {
             return new OkObjectResult(new
@@ -305,7 +305,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         [FunctionName("HttpExtensionsJwtAuth2")]
         public static async Task<IActionResult> HttpExtensionsJwtAuth2(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            [HttpToken]HttpUser user,
+            [HttpToken] HttpUser user,
             ILogger log)
         {
             return new OkResult();

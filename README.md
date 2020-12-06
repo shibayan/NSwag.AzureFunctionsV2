@@ -1,4 +1,4 @@
-# NSwag Azure Functions v2 Swagger Generator
+# NSwag Azure Functions Swagger Generator
 
 [![Wiki](https://img.shields.io/badge/docs-in%20wiki-green.svg?style=flat)](https://github.com/Jusas/NSwag.AzureFunctionsV2/wiki) 
 [![Nuget](https://img.shields.io/nuget/v/NSwag.SwaggerGeneration.AzureFunctionsV2.svg)](https://www.nuget.org/packages/NSwag.SwaggerGeneration.AzureFunctionsV2/) 

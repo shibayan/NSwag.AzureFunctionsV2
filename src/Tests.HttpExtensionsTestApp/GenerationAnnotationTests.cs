@@ -30,7 +30,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerAuthorize]
+        [OpenApiAuthorize(AuthScheme.Basic)]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerAuthorizeAttribute1")]
         public static async Task<IActionResult> SwaggerAuthorizeAttribute1(
@@ -46,7 +46,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerAuthorize(AuthScheme.HeaderApiKey)]
+        [OpenApiAuthorize(AuthScheme.HeaderApiKey)]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerAuthorizeAttribute2")]
         public static async Task<IActionResult> SwaggerAuthorizeAttribute2(
@@ -62,7 +62,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerAuthorize(AuthScheme.QueryApiKey)]
+        [OpenApiAuthorize(AuthScheme.QueryApiKey)]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerAuthorizeAttribute3")]
         public static async Task<IActionResult> SwaggerAuthorizeAttribute3(
@@ -78,7 +78,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerFormData("formField1", true, typeof(string), "description")]
+        [OpenApiFormData("formField1", true, typeof(string), "description")]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerFormDataAttribute1")]
         public static async Task<IActionResult> SwaggerFormDataAttribute1(
@@ -94,7 +94,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerFormDataFile(false, "file", "description")]
+        [OpenApiFormDataFile(false, "file", "description")]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerFormDataFileAttribute1")]
         public static async Task<IActionResult> SwaggerFormDataFileAttribute1(
@@ -110,7 +110,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerFormDataFile(true, "files", "description")]
+        [OpenApiFormDataFile(true, "files", "description")]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerFormDataFileAttribute2")]
         public static async Task<IActionResult> SwaggerFormDataFileAttribute2(
@@ -126,7 +126,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerQueryParameter("queryParam", false, typeof(string), "A query parameter")]
+        [OpenApiQueryParameter("queryParam", false, typeof(string), "A query parameter")]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerQueryParamAttribute1")]
         public static async Task<IActionResult> SwaggerQueryParamAttribute1(
@@ -142,7 +142,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerQueryParameter("queryParam", false, typeof(int), "Yet another description")]
+        [OpenApiQueryParameter("queryParam", false, typeof(int), "Yet another description")]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerQueryParamAttribute2")]
         public static async Task<IActionResult> SwaggerQueryParamAttribute2(
@@ -158,7 +158,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerQueryParameter("queryParam", false, typeof(List<int>))]
+        [OpenApiQueryParameter("queryParam", false, typeof(List<int>))]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerQueryParamAttribute3")]
         public static async Task<IActionResult> SwaggerQueryParamAttribute3(
@@ -174,7 +174,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerRequestBodyType(typeof(Person), Description = "description", Required = true, Name = "Body")]
+        [OpenApiRequestBodyType(typeof(Person), Description = "description", Required = true, Name = "Body")]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerRequestBodyTypeAttribute1")]
         public static async Task<IActionResult> SwaggerRequestBodyTypeAttribute1(
@@ -190,7 +190,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerRequestHeader("x-header", false, typeof(string), "description")]
+        [OpenApiRequestHeader("x-header", false, typeof(string), "description")]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerRequestHeaderAttribute1")]
         public static async Task<IActionResult> SwaggerRequestHeaderAttribute1(
@@ -257,8 +257,8 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
         /// <param name="req"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        [SwaggerAuthorize]
-        [SwaggerRequestBodyType(typeof(MyHttpPostModel), false, "My Custom Body", "My Custom Body Description")]
+        [OpenApiAuthorize(AuthScheme.Basic)]
+        [OpenApiRequestBodyType(typeof(MyHttpPostModel), false, "My Custom Body", "My Custom Body Description")]
         [SwaggerResponse(200, typeof(string), Description = "OK result")]
         [FunctionName("SwaggerFunctionWithNonHttpRequestParamAndBodyTypeSet")]
         public static async Task<IActionResult> SwaggerFunctionWithNonHttpRequestParamAndBodyTypeSet(

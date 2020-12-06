@@ -144,7 +144,7 @@ namespace NSwag.Generation.AzureFunctions
                 var operation = o.Item1;
                 var method = o.Item2;
 
-                var addOperation = await RunOperationProcessorsAsync(document, staticAzureFunctionClassType, method,
+                var addOperation = RunOperationProcessors(document, staticAzureFunctionClassType, method,
                     operation, allOps, swaggerGenerator, schemaResolver);
                 if (addOperation)
                 {
@@ -168,7 +168,7 @@ namespace NSwag.Generation.AzureFunctions
         }
 
         // TODO: remove asyncness as most NSwag operations have been converted to sync.
-        private async Task<bool> RunOperationProcessorsAsync(OpenApiDocument document, Type staticAzureFunctionClassType, MethodInfo methodInfo,
+        private bool RunOperationProcessors(OpenApiDocument document, Type staticAzureFunctionClassType, MethodInfo methodInfo,
             OpenApiOperationDescription operationDescription, List<OpenApiOperationDescription> allOperations, OpenApiDocumentGenerator swaggerGenerator,
             OpenApiSchemaResolver schemaResolver)
         {
@@ -188,7 +188,8 @@ namespace NSwag.Generation.AzureFunctions
                 .GetCustomAttributes()
                 // 3. Run from method attributes
                 .Concat(methodInfo.GetCustomAttributes())
-                .Where(a => a.GetType().IsAssignableToTypeName("SwaggerOperationProcessorAttribute", TypeNameStyle.Name));
+                .Where(a => a.GetType().IsAssignableToTypeName("OpenApiOperationProcessorAttribute", TypeNameStyle.Name) ||
+                            a.GetType().IsAssignableToTypeName("SwaggerOperationProcessorAttribute", TypeNameStyle.Name));
 
             foreach (dynamic attribute in operationProcessorAttribute)
             {
@@ -214,8 +215,8 @@ namespace NSwag.Generation.AzureFunctions
         {
             var methods = azureFunctionStaticClassType.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.Instance);
             methods = methods.Where(x => x.GetCustomAttributes().Any(a => a.GetType().Name == "FunctionNameAttribute")).ToArray();
-            methods = methods.Where(x => x.GetCustomAttributes().All(a => a.GetType().Name != "SwaggerIgnoreAttribute" &&
-                                                                          a.GetType().Name != "OpenApiIgnoreAttribute" &&
+            methods = methods.Where(x => x.GetCustomAttributes().All(a => a.GetType().Name != "OpenApiIgnoreAttribute" &&
+                                                                          a.GetType().Name != "SwaggerIgnoreAttribute" &&
                                                                           a.GetType().Name != "NonActionAttribute")).ToArray();
             methods = methods.Where(x => x.GetParameters().Any(p => p.GetCustomAttributes().Any(a => a.GetType().Name == "HttpTriggerAttribute"))).ToArray();
             if (functionNames != null)
@@ -320,7 +321,7 @@ namespace NSwag.Generation.AzureFunctions
         {
             string operationId;
 
-            dynamic swaggerOperationAttribute = method.GetCustomAttributes().FirstOrDefault(a => a.GetType().Name == "SwaggerOperationAttribute");
+            dynamic swaggerOperationAttribute = method.GetCustomAttributes().FirstOrDefault(a => a.GetType().Name == "OpenApiOperationAttribute" || a.GetType().Name == "SwaggerOperationAttribute");
             if (swaggerOperationAttribute != null && !string.IsNullOrEmpty(swaggerOperationAttribute.OperationId))
                 operationId = swaggerOperationAttribute.OperationId;
             else

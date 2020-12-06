@@ -3,6 +3,16 @@
 namespace NSwag.Annotations.AzureFunctions
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+    public class OpenApiRequestHeaderAttribute : SwaggerRequestHeaderAttribute
+    {
+        public OpenApiRequestHeaderAttribute(string name, bool required = false, Type type = null, string description = null)
+            : base(name, required, type, description)
+        {
+        }
+    }
+
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+    [Obsolete("Use " + nameof(OpenApiRequestHeaderAttribute) + " instead.")]
     public class SwaggerRequestHeaderAttribute : Attribute
     {
         /// <summary>

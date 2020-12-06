@@ -85,7 +85,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
                 "HttpHeaderAttribute"
             };
 
-            foreach(var attribute in parameter.GetCustomAttributes())
+            foreach (var attribute in parameter.GetCustomAttributes())
             {
                 var attributeClassAttributes = attribute.GetType().GetCustomAttributes();
                 if (attributeClassAttributes.Any(a => a.GetType().Name == "BindingAttribute" &&
@@ -101,15 +101,15 @@ namespace NSwag.Generation.AzureFunctions.Processors
             var httpPath = context.OperationDescription.Path;
             var position = 1;
 
-            var ignoredParameterTypeNames = new string[] {"HttpRequest", "TraceWriter", "TextWriter", "ILogger", "ClaimsPrincipal", "CancellationToken"};
-            var ignoreAttributeTypeNames = new string[] {"SwaggerIgnoreAttribute", "OpenApiIgnoreAttribute", "FromServicesAttribute", "BindNeverAttribute"};
+            var ignoredParameterTypeNames = new string[] { "HttpRequest", "TraceWriter", "TextWriter", "ILogger", "ClaimsPrincipal", "CancellationToken" };
+            var ignoreAttributeTypeNames = new string[] { "OpenApiIgnoreAttribute", "SwaggerIgnoreAttribute", "FromServicesAttribute", "BindNeverAttribute" };
 
             // Ignore parameters that are directly Azure Functions related or explicitly marked as ignored.
             // The resulting parameters should include the HttpParam<T> parameters that come from
             // AzureFunctionsV2.HttpExtensions, if there were any.
             var parameters = new List<object>(
                 context.MethodInfo.GetParameters()
-                    .Where(x => !ignoredParameterTypeNames.Contains(x.ParameterType.Name) && 
+                    .Where(x => !ignoredParameterTypeNames.Contains(x.ParameterType.Name) &&
                                 x.GetCustomAttributes().All(a => !ignoreAttributeTypeNames.Contains(a.GetType().Name)) &&
                                 !HasBindingAttribute(x))
                 );
@@ -158,7 +158,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
                 var requestBodyParamRequired = bodyTypeAttribute.TryGetPropertyValue("Required", false);
                 if (string.IsNullOrEmpty(requestBodyParamName))
                     requestBodyParamName = "Body";
-                parameters.Add(new SwaggerMethodAttributeParameter(requestBodyParamName, SwaggerMethodAttributeParameterType.TypedBody, 
+                parameters.Add(new SwaggerMethodAttributeParameter(requestBodyParamName, SwaggerMethodAttributeParameterType.TypedBody,
                     requestBodyParamType, requestBodyParamRequired, requestBodyParamDescription));
             }
 
@@ -171,7 +171,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
                     var headerType = headerAttribute.TryGetPropertyValue("Type", default(Type));
                     var headerRequired = headerAttribute.TryGetPropertyValue("Required", false);
                     if (headerType != null && headerName != null)
-                        parameters.Add(new SwaggerMethodAttributeParameter(headerName, SwaggerMethodAttributeParameterType.Header, 
+                        parameters.Add(new SwaggerMethodAttributeParameter(headerName, SwaggerMethodAttributeParameterType.Header,
                             headerType, headerRequired, headerDescription));
                 }
             }
@@ -184,7 +184,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
                     var queryParameterDescription = queryAttribute.TryGetPropertyValue("Description", default(string));
                     var queryParameterType = queryAttribute.TryGetPropertyValue("Type", default(Type));
                     var queryParameterRequired = queryAttribute.TryGetPropertyValue("Required", false);
-                    if(queryParameterType != null && queryParameterName != null)
+                    if (queryParameterType != null && queryParameterName != null)
                         parameters.Add(new SwaggerMethodAttributeParameter(queryParameterName, SwaggerMethodAttributeParameterType.Query,
                             queryParameterType, queryParameterRequired, queryParameterDescription));
                 }
@@ -210,11 +210,11 @@ namespace NSwag.Generation.AzureFunctions.Processors
                 var parameterName = isRegularMethodParameter
                     ? ((ParameterInfo)parameterObj).Name
                     : ((SwaggerMethodAttributeParameter)parameterObj).Name;
-                
+
                 var attributes = isRegularMethodParameter
-                    ? ((ParameterInfo) parameterObj).GetCustomAttributes().ToList()
+                    ? ((ParameterInfo)parameterObj).GetCustomAttributes().ToList()
                     : new List<Attribute>();
-                
+
                 // All parameters in Azure Function signature are URI parameters; the definition is strict, only
                 // binding parameters, URI parameters and Functions specific parameters (HttpRequest, TraceWriter, etc.)
                 // are allowed as Azure Function parameters. Non-binding, non-route parameters are forbidden in Function signature.
@@ -246,7 +246,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
                     // Non-regular parameter handling (ie. parameters that are not in function signature but as method attributes)
                     if (!isRegularMethodParameter)
                     {
-                        var parameterAsAttribute = (SwaggerMethodAttributeParameter) parameterObj;
+                        var parameterAsAttribute = (SwaggerMethodAttributeParameter)parameterObj;
 
                         if (parameterAsAttribute.ParameterType == SwaggerMethodAttributeParameterType.File)
                         {
@@ -300,9 +300,9 @@ namespace NSwag.Generation.AzureFunctions.Processors
                     }
                     // Regular parameter handling. These ones should only be the HttpParam<T> type parameters
                     // coming from the usage of AzureFunctionsV2.HttpExtensions package.
-                    else if(((ParameterInfo)parameterObj).ParameterType.Name == "HttpParam`1")
+                    else if (((ParameterInfo)parameterObj).ParameterType.Name == "HttpParam`1")
                     {
-                        var httpParam = (ParameterInfo) parameterObj;                        
+                        var httpParam = (ParameterInfo)parameterObj;
                         var httpParamDocumentation = httpParam.GetXmlDocs();
                         var httpParamType = httpParam.ParameterType;
 
@@ -321,7 +321,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
                         if (!string.IsNullOrEmpty(annotatedParamName))
                             parameterName = annotatedParamName;
 
-                        if(paramHttpExtensionAttribute.GetType().Name != "HttpBodyAttribute")
+                        if (paramHttpExtensionAttribute.GetType().Name != "HttpBodyAttribute")
                             operationParameter = context.DocumentGenerator.CreatePrimitiveParameter(
                                 parameterName, httpParamDocumentation,
                                 httpParamContainerValueType.ToContextualType(synthesizedAttributes));
@@ -364,7 +364,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
                         operationParameter.IsNullableRaw = null;
                     }
                 }
-                
+
             }
 
             if (_settings.AddMissingPathParameters)
@@ -392,7 +392,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
             if (operationDescription.Operation.ActualParameters.Any(p => p.Type == JsonObjectType.File))
                 operationDescription.Operation.Consumes = new List<string> { "multipart/form-data" };
             else if (operationDescription.Operation.ActualParameters.Any(p => p.Kind == OpenApiParameterKind.FormData))
-                operationDescription.Operation.Consumes = new List<string>() {"application/x-www-form-urlencoded"};
+                operationDescription.Operation.Consumes = new List<string>() { "application/x-www-form-urlencoded" };
         }
 
         private void RemoveUnusedPathParameters(OpenApiOperationDescription operationDescription, string httpPath)
@@ -468,7 +468,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
                         parameterType.ToContextualType(attributes),
                         isNullable,
                         context.SchemaResolver)
-            };
+                };
             }
 
             return operationParameter;
@@ -482,7 +482,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
                 name, parameterDocumentation, typeof(IFormFile).ToContextualType(attributes));
 
             InitializeFileParameter(operationParameter, multiFile);
-            
+
             return operationParameter;
         }
 

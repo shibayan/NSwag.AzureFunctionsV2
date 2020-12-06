@@ -12,7 +12,7 @@ using Xunit;
 
 namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
 {
-   public class RouteParamTests
+    public class RouteParamTests
     {
         [Fact]
         public async Task Should_include_two_route_params_from_function_signature()

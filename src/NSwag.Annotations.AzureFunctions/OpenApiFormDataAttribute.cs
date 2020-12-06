@@ -1,11 +1,21 @@
 ﻿using System;
 
 namespace NSwag.Annotations.AzureFunctions
-{   
+{
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+    public class OpenApiFormDataAttribute : SwaggerFormDataAttribute
+    {
+        public OpenApiFormDataAttribute(string name, bool required = false, Type type = null, string description = null)
+            : base(name, required, type, description)
+        {
+        }
+    }
+
     /// <summary>
     /// Indicates that the request body of this method contains a form multi-part key-value pair.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+    [Obsolete("Use " + nameof(OpenApiFormDataAttribute) + " instead.")]
     public class SwaggerFormDataAttribute : Attribute
     {
         public SwaggerFormDataAttribute(string name, bool required = false, Type type = null, string description = null)

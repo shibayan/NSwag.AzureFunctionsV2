@@ -13,7 +13,7 @@ using Xunit;
 
 namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
 {
-    
+
     public class SwaggerAzureFunctionsV2AnnotationsTests
     {
 
@@ -28,7 +28,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
 
             // Act
             var swaggerDoc = await generator.GenerateForAzureFunctionClassAndSpecificMethodsAsync(
-                typeof(GenerationAnnotationTests), new List<string>() {functionName});
+                typeof(GenerationAnnotationTests), new List<string>() { functionName });
 
             // Assert
             Assert.Equal(1, swaggerDoc.Operations.First().Operation.ActualSecurity.Count);

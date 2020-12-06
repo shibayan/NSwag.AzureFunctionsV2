@@ -19,7 +19,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
 
             // Act
             var swaggerDoc = await generator.GenerateForAzureFunctionClassesAsync(
-                new[] {typeof(NonStaticFunctionClass), typeof(IgnoredNonStaticFunctionClass)}, null);
+                new[] { typeof(NonStaticFunctionClass), typeof(IgnoredNonStaticFunctionClass) }, null);
 
             // Assert
             swaggerDoc.Operations.Count().Should().Be(1);

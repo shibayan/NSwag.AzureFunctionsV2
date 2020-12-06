@@ -2,10 +2,20 @@
 
 namespace NSwag.Annotations.AzureFunctions
 {
+    [AttributeUsage(AttributeTargets.Method)]
+    public class OpenApiRequestBodyTypeAttribute : SwaggerRequestBodyTypeAttribute
+    {
+        public OpenApiRequestBodyTypeAttribute(Type type, bool required = false, string name = null, string description = null)
+            : base(type, required, name, description)
+        {
+        }
+    }
+
     /// <summary>
     /// Indicates the type of the request body.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Method)]
+    [Obsolete("Use " + nameof(OpenApiRequestBodyTypeAttribute) + " instead.")]
     public class SwaggerRequestBodyTypeAttribute : Attribute
     {
         /// <summary>

@@ -31,7 +31,7 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsApp.Start
             //settings.RoutePrefix = "";
             settings.OperationProcessors.Add(new OperationSecurityProcessor("Bearer",
                 OpenApiSecuritySchemeType.OpenIdConnect));
-            var scopes = new List<string>() {"openid", "profile", "name"};
+            var scopes = new List<string>() { "openid", "profile", "name" };
             settings.DocumentProcessors.Add(new SecurityDefinitionAppender("Bearer", scopes, new OpenApiSecurityScheme()
             {
                 Type = OpenApiSecuritySchemeType.OAuth2,
@@ -72,6 +72,6 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsApp.Start
                 In = OpenApiSecurityApiKeyLocation.Query
             }));
         }
-        
+
     }
 }

@@ -12,7 +12,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
     public class OperationResponseProcessor : OperationResponseProcessorBase, IOperationProcessor
     {
 
-        public OperationResponseProcessor(AzureFunctionsOpenApiDocumentGeneratorSettings settings) 
+        public OperationResponseProcessor(AzureFunctionsOpenApiDocumentGeneratorSettings settings)
             : base(settings)
         {
         }
@@ -21,6 +21,7 @@ namespace NSwag.Generation.AzureFunctions.Processors
         {
             var responseTypeAttributes = context.MethodInfo.GetCustomAttributes()
                 .Where(a => a.GetType().Name == "ResponseTypeAttribute" ||
+                            a.GetType().Name == "OpenApiResponseAttribute" ||
                             a.GetType().Name == "SwaggerResponseAttribute")
                 .ToList();
 
