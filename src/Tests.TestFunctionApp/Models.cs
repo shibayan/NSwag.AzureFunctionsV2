@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp
+﻿namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp
 {
 
     // Requests

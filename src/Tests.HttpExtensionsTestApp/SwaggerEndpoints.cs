@@ -1,20 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using AzureFunctionsV2.HttpExtensions.Annotations;
-using AzureFunctionsV2.HttpExtensions.Infrastructure;
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using NJsonSchema.Infrastructure;
+
 using NSwag.Annotations;
 using NSwag.Generation.AzureFunctions;
 using NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsApp.Startup;
@@ -41,7 +35,6 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp
             {
                 typeof(SwaggerEndpoints),
                 typeof(GenerationAnnotationTests),
-                typeof(HttpExtensionTests),
                 typeof(RouteParamTests)
             };
             var document = await generator.GenerateForAzureFunctionClassesAsync(funcClasses, null);

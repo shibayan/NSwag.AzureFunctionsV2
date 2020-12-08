@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+
 using FluentAssertions;
+
 using NJsonSchema;
 
-using NSwag.Generation.AzureFunctions;
-using NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp;
 using Xunit;
 
-namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
+namespace NSwag.Generation.AzureFunctions.Tests
 {
     public class RouteParamTests
     {
@@ -20,11 +18,11 @@ namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
             // Arrange
             var settings = new AzureFunctionsOpenApiDocumentGeneratorSettings();
             var generator = new AzureFunctionsOpenApiDocumentGenerator(settings);
-            var functionName = nameof(HttpExtensionsTestApp.RouteParamTests.RouteParamTest);
+            var functionName = nameof(SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp.RouteParamTests.RouteParamTest);
 
             // Act
             var swaggerDoc = await generator.GenerateForAzureFunctionClassAndSpecificMethodsAsync(
-                typeof(HttpExtensionsTestApp.RouteParamTests), new List<string>() { functionName });
+                typeof(SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp.RouteParamTests), new List<string>() { functionName });
 
             // Assert
             var operation = swaggerDoc.Operations.First().Operation;

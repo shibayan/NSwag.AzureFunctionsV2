@@ -1,25 +1,14 @@
-using System;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
+﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
-using NSwag.Annotations;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Net.Http.Headers;
+
 using Newtonsoft.Json;
 
+using NSwag.Annotations;
 using NSwag.Annotations.AzureFunctions;
 using NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp.Helpers;
 

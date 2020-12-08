@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+
 using FluentAssertions;
 
-using NSwag.Generation.AzureFunctions;
 using NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.TestFunctionApp;
+
 using Xunit;
 
-namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
+namespace NSwag.Generation.AzureFunctions.Tests
 {
     public class NonStaticFunctionClassTests
     {

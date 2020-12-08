@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+
 using FluentAssertions;
+
 using NJsonSchema;
 
-using NSwag.Generation.AzureFunctions;
 using NSwag.Generation.AzureFunctions.Processors;
 using NSwag.SwaggerGeneration.AzureFunctionsV2.Tests.HttpExtensionsTestApp;
+
 using Xunit;
 
-namespace NSwag.SwaggerGeneration.AzureFunctionsV2.Tests
+namespace NSwag.Generation.AzureFunctions.Tests
 {
 
-    public class SwaggerAzureFunctionsV2AnnotationsTests
+    public class SwaggerAzureFunctionsAnnotationsTests
     {
 
         [Fact]
